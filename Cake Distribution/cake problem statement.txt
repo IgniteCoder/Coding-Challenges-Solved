@@ -1,0 +1,15 @@
+A company is throwing party, each guest will have a cake with radius r based on their performance.
+but, it would be unfair to give cake with differrent sizes to guests,
+find the largest piece(radius of cake) that can be given to all guests,each guest gets only 1 piece, a piece cannot be cut into more pieces.
+
+take PI= 3.14
+area = PI * r * r
+
+First line conatins number of guest n
+Next line contains n spaced integers with radius ri
+
+Sample Input:
+5
+1 2 3 5 6
+
+Output: 2.5
