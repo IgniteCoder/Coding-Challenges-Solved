@@ -1,0 +1,123 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    public static void main(String[] args) {
+           Scanner sc= new Scanner(System.in);
+           TravelAgencies[] agencies = new TravelAgencies[4];
+           for (int i = 0; i < agencies.length; i++) {
+                int regNo = sc.nextInt();
+                sc.nextLine();
+                String agencyName = sc.nextLine();
+                String packageType = sc.nextLine();
+                int price = sc.nextInt();
+                boolean flightFacility = sc.nextBoolean();
+                agencies[i] = new TravelAgencies(regNo,agencyName,packageType,price,flightFacility);
+
+  }
+            int regip= sc.nextInt();
+            sc.nextLine();
+            String packageip = sc.nextLine();
+           int op =findAgencyWithHighestPackagePrice(agencies);
+           System.out.println(op);
+           TravelAgencies agencyop= agencyDetailsForGivenIdAndType(agencies,regip,packageip);
+           if(agencyop==null)
+           System.out.println("No agency matched");
+           else 
+           System.out.println(agencyop.getagencyName()+ ":" + agencyop.getprice());
+
+           //code to display the result
+
+    }
+
+
+public static int findAgencyWithHighestPackagePrice(TravelAgencies[] agencies)
+  {
+      int high=0;
+      for (int i=0;i<agencies.length;i++)
+      {
+          if(high<agencies[i].getprice())
+          high = agencies[i].getprice();
+      }
+      return high;
+  }
+
+public static TravelAgencies agencyDetailsForGivenIdAndType(TravelAgencies[] agencies, int 
+
+regNo, String packageType) 
+  {
+    for (int i = 0; i < agencies.length; i++) {
+   if (packageType.equalsIgnoreCase(agencies[i].getpackageType()) && regNo==agencies[i].getregNo()) {
+    if (agencies[i].getflightFacility())
+    {
+        return agencies[i];
+    }
+   }
+    }
+  
+  return null;
+  }
+}
+class TravelAgencies
+{
+  private int  regNo,price;
+  private String agencyName,packageType;
+  boolean flightFacility;
+  TravelAgencies(int regNo,String agencyName,String packageType,int price,boolean flightFacility)
+  {
+      this.regNo=regNo;
+      this.price = price;
+      this.agencyName = agencyName;
+      this.packageType= packageType;
+      this.flightFacility=flightFacility;
+
+
+  }
+  void setregNo(int regNo)
+  {
+      this.regNo= regNo;
+  }
+    void setagencyName(String agencyName)
+  {
+      this.agencyName= agencyName;
+  }
+  void setpackageType(String packageType)
+  {
+      this.packageType= packageType;
+  }
+    void setprice(int price)
+  {
+      this.price= price;
+  }
+      void setflightFacility(boolean flightFacility)
+  {
+      this.flightFacility= flightFacility;
+  }
+
+  //getters
+
+  int getregNo()
+  {
+      return regNo;
+  }
+  int getprice()
+  {
+      return price;
+  }
+    String getagencyName()
+  {
+      return agencyName;
+  }
+    String getpackageType()
+  {
+      return packageType;
+  }
+    boolean getflightFacility()
+  {
+      return flightFacility;
+  } 
+
+}
